@@ -38,6 +38,28 @@ greenLED.openWaitForAttachment(1000)
 redButton.openWaitForAttachment(1000)
 greenButton.openWaitForAttachment(1000)
 
+
+# Create flash-win functions
+def red_win_flash():
+    times_flashed = 0
+    while times_flashed < 5:
+        redLED.setState(True)
+        time.sleep(0.1)
+        redLED.setState(False)
+        time.sleep(0.1)
+        times_flashed = times_flashed + 1
+
+
+def green_win_flash():
+    times_flashed = 0
+    while times_flashed < 5:
+        greenLED.setState(True)
+        time.sleep(0.1)
+        greenLED.setState(False)
+        time.sleep(0.1)
+        times_flashed = times_flashed + 1
+
+
 # Start game
 print("Starting game?")
 engine.say("Press both buttons to start a new game.")
@@ -208,37 +230,45 @@ while run == 0:
     if gameMode == 1:
         if redScore >= greenScore + 10:
             if playerOne == 1:
+                red_win_flash()
                 engine.say("Player one, red, with " + str(redScore) + " points!")
                 engine.runAndWait()
                 playerOneGamesWon = playerOneGamesWon + 1
-            elif playerOne == 2:
+            if playerOne == 2:
+                red_win_flash()
                 engine.say("Player two, red, with " + str(redScore) + " points!")
                 engine.runAndWait()
                 playerTwoGamesWon = playerTwoGamesWon + 1
         if greenScore >= redScore + 10:
             if playerOne == 2:
+                green_win_flash()
                 engine.say("Player one, green, with " + str(greenScore) + " points!")
                 engine.runAndWait()
                 playerOneGamesWon = playerOneGamesWon + 1
             if playerOne == 1:
+                green_win_flash()
                 engine.say("Player two, green, with " + str(greenScore) + " points!")
                 playerTwoGamesWon = playerTwoGamesWon + 1
     if gameMode == 0:
         if redScore >= 10:
             if playerOne == 1:
+                red_win_flash()
                 engine.say("Player one, red, with ten points!")
                 engine.runAndWait()
                 playerOneGamesWon = playerOneGamesWon + 1
-            elif playerOne == 2:
+            if playerOne == 2:
+                red_win_flash()
                 engine.say("Player two, red, with ten points!")
                 engine.runAndWait()
                 playerTwoGamesWon = playerTwoGamesWon + 1
         if greenScore >= 10:
             if playerOne == 2:
+                green_win_flash()
                 engine.say("Player one, green, with ten points!")
                 engine.runAndWait()
                 playerOneGamesWon = playerOneGamesWon + 1
             if playerOne == 1:
+                green_win_flash()
                 engine.say("Player two, green, with ten points!")
                 playerTwoGamesWon = playerTwoGamesWon + 1
 
