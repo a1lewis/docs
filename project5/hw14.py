@@ -33,6 +33,6 @@ while True:
         greenLED.setState(False)
     # Add to log file
     log = open("/Users/andrew/Desktop/temp_history.log", "a")
-    log.write(str(round(time.time())) + ": " + str(roundedFahrenheitTemp) + "\n")
+    log.write(str(round(time.time())) + ": " + str(roundedFahrenheitTemp) + " degrees Fahenheit\n")
     log.close()
     time.sleep(1)
